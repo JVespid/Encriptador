@@ -49,78 +49,29 @@ const decryptContent = () => {
 }
 
 const encrypt = (value) => {
-    let arraytoEncrypt = value.split(" ");
     const textArea = document.querySelector(`.processedText-textarea`);
 
-
-    let arrayEncript = arraytoEncrypt.map(word => {
-
-        let aNoWords = word.split("a");
-
-        let aANoWord = aNoWords.map(aNoWord => {
-
-            let eNoWords = aNoWord.split("e");
-
-            let eENoWord = eNoWords.map(eNoWord => {
-
-                let iNoWords = eNoWord.split("i");
-
-                let iINoWord = iNoWords.map(iNoWord => {
-
-                    let oNoWords = iNoWord.split("o");
-
-                    let oONoWord = oNoWords.map(oNoWord => {
-                        let uNoWords = oNoWord.split("u");
-                        return uNoWords.join("ufat");
-                    });
-                    return oONoWord.join("ober");
-                });
-                return iINoWord.join("imes");
-            })
-            return eENoWord.join("enter");
-        })
-
-        return aANoWord.join("ai");
-    });
-
-    textArea.value = arrayEncript.join(" ");
+    
+    let encriptador = [/e/gi,/i/gi,/a/gi,/o/gi,/u/gi];
+    let palabrasclave = ["enter","imes","ai","ober","ufat"];
+    let newstr = value;
+    for (let i = 0; i < palabrasclave.length; i++) {
+        newstr = newstr.replace(encriptador[i], palabrasclave[i]);
+    }
+    textArea.value = newstr;
 
 }
+
 const decrypt = (value) => {
-    let arraytoEncrypt = value.split(" ");
     const textArea = document.querySelector(`.processedText-textarea`);
-
-    let arrayEncript = arraytoEncrypt.map(word => {
-
-        let aNoWords = word.split("ai");
-
-        let aANoWord = aNoWords.map(aNoWord => {
-
-            let eNoWords = aNoWord.split("enter");
-
-            let eENoWord = eNoWords.map(eNoWord => {
-
-                let iNoWords = eNoWord.split("imes");
-
-                let iINoWord = iNoWords.map(iNoWord => {
-
-                    let oNoWords = iNoWord.split("ober");
-
-                    let oONoWord = oNoWords.map(oNoWord => {
-                        let uNoWords = oNoWord.split("ufat");
-                        return uNoWords.join("u");
-                    });
-                    return oONoWord.join("o");
-                });
-                return iINoWord.join("i");
-            })
-            return eENoWord.join("e");
-        })
-
-        return aANoWord.join("a");
-    });
-
-    textArea.value = arrayEncript.join(" ");
+    
+    let palabrasclave = [/enter/g,/imes/g,/ai/g,/ober/g,/ufat/g];
+    let desencriptador = ["e","i","a","o","u"];
+    let newstr = value;
+    for (let i = 0; i < palabrasclave.length; i++) {
+        newstr = newstr.replace(palabrasclave[i],desencriptador[i]);
+    }
+    textArea.value = newstr;
 }
 
 

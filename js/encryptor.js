@@ -18,7 +18,7 @@ const encryptContent = () => {
     decryptVar.value = "Desencriptar"
 
     const comprobation = document.querySelector(`.textToProcessed`);
-    if (comprobation.value.trim) {
+    if (comprobation.value.length>0) {
         encrypt(comprobation.value);
     }
 
@@ -42,7 +42,7 @@ const decryptContent = () => {
 
 
     const comprobation = document.querySelector(`.textToProcessed`);
-    if (comprobation.value.trim) {
+    if (comprobation.value.length>0) {
         decrypt(comprobation.value);
     }
 
@@ -87,10 +87,8 @@ const encrypt = (value) => {
 
 }
 const decrypt = (value) => {
-    console.log("decrip")
     let arraytoEncrypt = value.split(" ");
     const textArea = document.querySelector(`.processedText-textarea`);
-
 
     let arrayEncript = arraytoEncrypt.map(word => {
 
@@ -128,7 +126,6 @@ const decrypt = (value) => {
 
 
 const keyPressEvent = (e) => {
-
     if (e.keyCode === 32 || e.keyCode === 13) {
         if (data === 1) {
             encryptContent();
@@ -137,8 +134,6 @@ const keyPressEvent = (e) => {
         }
     }
 }
-
-
 
 
 const mainFunctional = () => {

@@ -126,6 +126,15 @@ const decrypt = (value) => {
 
 
 const keyPressEvent = (e) => {
+
+    if (e.keyCode === 9) {
+        if (data===1) {
+            data=0;
+        }else{
+            data=1;
+        }
+    }
+
     if (e.keyCode === 32 || e.keyCode === 13) {
         if (data === 1) {
             encryptContent();
@@ -133,6 +142,7 @@ const keyPressEvent = (e) => {
             decryptContent();
         }
     }
+
 }
 
 

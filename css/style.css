@@ -138,6 +138,7 @@ box-shadow: 0px 0px 19px 1px rgba(0,0,0,0.75);
   max-height: 100%;
   min-height: 800px;
   margin: auto;
+  border-radius: 25px;
   background-color: rgb(255, 255, 255);
 }
 .noCntent-div-img {
@@ -185,6 +186,7 @@ box-shadow: 0px 0px 19px 1px rgba(0,0,0,0.75);
   margin: auto;
   background-color: rgb(255, 255, 255);
   border-radius: 25px;
+  border-radius: 25px;
 }
 .textArea-processedText{
   display: flex;
@@ -193,6 +195,7 @@ box-shadow: 0px 0px 19px 1px rgba(0,0,0,0.75);
   height: 100%;
   margin: auto;
   background-color: var(--transparent);
+  border-radius: 25px;
 }
 .processedText-textarea{
   display: inline-block;

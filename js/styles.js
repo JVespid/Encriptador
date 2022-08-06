@@ -1,4 +1,5 @@
 // Apartado de Funciones
+let repeat = 0;
 
 //función para insertar html en el cualquier parte de la pagina con solo un clase
 const insertHtml = (html, classs) => {
@@ -8,7 +9,7 @@ const insertHtml = (html, classs) => {
 //función para cambiar el tipo de mensaje según la resolución de la pantalla
 const changeProcessedNoText = () => {
     const noHTMLGreat = `
-    <div class="noContentGreat">
+    <section class="noContentGreat">
         <div class="noCntent-div-img">
             <img class="noCntent-img" src="img/search.svg" alt="search">
         </div>
@@ -16,19 +17,19 @@ const changeProcessedNoText = () => {
             <h2 class="noContent-h2">Ningún mensaje fue encontrado</h2>
             <p class="noConten-p">Ingresa el texto que desees encriptar o desencriptar.</p>
         </div>
-    </div>
+    </section>
     `;
     const noHTMLShort = `
-    <div class="noContentShort">
+    <section class="noContentShort">
         <div class="noContent-div-text">
             <h2 class="noContent-h2">Ningún mensaje fue encontrado</h2>
             <p class="noConten-p">Ingresa el texto que desees encriptar o desencriptar.</p>
         </div>
-    </div>
+    </section>
     `;
     insertHtml("", "div-erase")
 
-
+    repeat = 0;
     let width = screen.width;
     if (width >= 1000) insertHtml(noHTMLGreat, `processedText`);
     else insertHtml(noHTMLShort, `processedText`);
@@ -39,25 +40,29 @@ const changeProcessedNoText = () => {
 const processedTextOnChange = () => {
     const dataTextToProcessed = document.querySelector(`.textToProcessed`);
     const yesHTML = `
-    <div class="yesContent">
-        <textarea class="processedText-textarea" placeholder="Texto procesado" readonly>wa ha ha</textarea>
+    <section class="yesContent">
+        <textarea class="processedText-textarea" placeholder="Texto procesado" readonly></textarea>
 
         <input type="button" class="btn-copy btn btn2" value="copiar"/>
-    </div>
+    </section>
     `;
     const noImgHTML = `
     <img src="img/erase.svg" alt="x" class="erase" title="Borrar">
     `;
 
     if (dataTextToProcessed.value.trim()) {
-        insertHtml(yesHTML, `processedText`);
-        insertHtml(noImgHTML, "div-erase");
-        const copyText = document.querySelector(`.btn-copy`);
-        copyText.addEventListener('click', copy);
-
-
-        const erase = document.querySelector(`.erase`);
-        erase.addEventListener('click', eraseClick);
+        if(repeat === 0){
+            repeat = 1
+            console.log(repeat)
+            insertHtml(yesHTML, `processedText`);
+            insertHtml(noImgHTML, "div-erase");
+            const copyText = document.querySelector(`.btn-copy`);
+            copyText.addEventListener('click', copy);
+            
+            
+            const erase = document.querySelector(`.erase`);
+            erase.addEventListener('click', eraseClick);
+        }
     } else changeProcessedNoText();
 
 

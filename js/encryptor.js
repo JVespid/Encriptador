@@ -5,6 +5,7 @@ const colorblue = "rgba(10, 56, 113, 1)"
 let data = 1;
 
 const encryptContent = () => {
+    processedTextOnChange();
     const decryptVar = document.querySelector(`.btn-decrypt`);
     const encryptVar = document.querySelector(`.btn-encrypt`);
     data = 1;
@@ -18,7 +19,7 @@ const encryptContent = () => {
     decryptVar.value = "Desencriptar"
 
     const comprobation = document.querySelector(`.textToProcessed`);
-    if (comprobation.value.length>0) {
+    if (comprobation.value.length > 0) {
         encrypt(comprobation.value);
     }
 
@@ -26,6 +27,7 @@ const encryptContent = () => {
 }
 
 const decryptContent = () => {
+    processedTextOnChange();
     const decryptVar = document.querySelector(`.btn-decrypt`);
     const encryptVar = document.querySelector(`.btn-encrypt`);
 
@@ -42,7 +44,7 @@ const decryptContent = () => {
 
 
     const comprobation = document.querySelector(`.textToProcessed`);
-    if (comprobation.value.length>0) {
+    if (comprobation.value.length > 0) {
         decrypt(comprobation.value);
     }
 
@@ -51,12 +53,12 @@ const decryptContent = () => {
 const encrypt = (value) => {
     const textArea = document.querySelector(`.processedText-textarea`);
 
-    
-    let encriptador = [/e/gi,/i/gi,/a/gi,/o/gi,/u/gi];
-    let palabrasclave = ["enter","imes","ai","ober","ufat"];
+
+    let Encriptador = [/e/gi, /i/gi, /a/gi, /o/gi, /u/gi];
+    let palabrasClave = ["enter", "imes", "ai", "ober", "ufat"];
     let newstr = value;
-    for (let i = 0; i < palabrasclave.length; i++) {
-        newstr = newstr.replace(encriptador[i], palabrasclave[i]);
+    for (let i = 0; i < palabrasClave.length; i++) {
+        newstr = newstr.replace(Encriptador[i], palabrasClave[i]);
     }
     textArea.value = newstr;
 
@@ -64,35 +66,31 @@ const encrypt = (value) => {
 
 const decrypt = (value) => {
     const textArea = document.querySelector(`.processedText-textarea`);
-    
-    let palabrasclave = [/enter/g,/imes/g,/ai/g,/ober/g,/ufat/g];
-    let desencriptador = ["e","i","a","o","u"];
+
+    let palabrasClave = [/enter/g, /imes/g, /ai/g, /ober/g, /ufat/g];
+    let desencriptador = ["e", "i", "a", "o", "u"];
     let newstr = value;
-    for (let i = 0; i < palabrasclave.length; i++) {
-        newstr = newstr.replace(palabrasclave[i],desencriptador[i]);
+    for (let i = 0; i < palabrasClave.length; i++) {
+        newstr = newstr.replace(palabrasClave[i], desencriptador[i]);
     }
     textArea.value = newstr;
 }
 
-
+//
 
 const keyPressEvent = (e) => {
-
-    if (e.keyCode === 32 || e.keyCode === 13) {
-        if (data === 1) {
-            encryptContent();
-        } else {
-            decryptContent();
-        }
+    if (data === 1) {
+        encryptContent();
+    } else {
+        decryptContent();
     }
-
 }
 
 
 const mainFunctional = () => {
 
     const comprobation = document.querySelector(`.textToProcessed`);
-    comprobation.addEventListener('keypress', keyPressEvent);
+    comprobation.addEventListener('keyup', keyPressEvent);
 
     const encryptVar = document.querySelector(`.btn-encrypt`);
     const decryptVar = document.querySelector(`.btn-decrypt`);

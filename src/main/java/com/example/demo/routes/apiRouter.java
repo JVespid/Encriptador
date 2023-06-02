@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -33,13 +34,14 @@ public class apiRouter {
 	@GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
 	public String apiGetV1(@PathVariable String version, @PathVariable String type,
 			@RequestParam(defaultValue = "", name = "text") String text) {
+		System.out.println("get  - " + text);
 		return EncryptAndDesEncrypt(version, type, text);
 	}
 
-	@PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
 	public String apiPostV1(@PathVariable String version, @PathVariable String type,
-			@RequestBody dataToRequestPost requestData) {
-		String text = requestData.getText();
+			@RequestParam(defaultValue = "", name = "text") String text) {
+		// String text = requestData.getText();
 		System.out.println("llega - " + text);
 		return EncryptAndDesEncrypt(version, type, text);
 	}

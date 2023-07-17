@@ -2,7 +2,7 @@
 Proyecto de Encriptador, echo para el curso de Oracle Next Education 2022.
 ___
 # Link directo al proyecto desplegado
-### [Link al Encriptador ](https://jvespid.github.io/Encriptador/)
+### [Link al Encriptador ](https://encriptador-with-spring.azurewebsites.net/)
 
 ___
 ## Instrucciones:
@@ -30,6 +30,13 @@ inserción del texto que será encriptado o desencriptado, y el usuario debe pod
 El resultado debe ser mostrado en la pantalla.
 ### Extras:
 - Un botón que copie el texto encriptado/desencriptado para la sección de transferencia, o sea que tenga la misma funcionalidad del ctrl+C o de la opción "copiar" del menú de las aplicaciones.
+
+___
+## Api
+Esta api resibe 2 parametros
+1. `<type>` puede ser `encrypt` o `desencrypt` para que la Api sepa que accion se quiere realizar
+2. `<text>` este parametro es solo el texto que se quiere procesar
+Para acceder a la api hecha en Java primero se debe de ingresar a a siguiente ruta `/api/v1/<type>?text=<value>`
 ___
 
 ##  Links a los materiales proporcionados:
